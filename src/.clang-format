@@ -1,0 +1,152 @@
+---
+# See https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+Language: Cpp
+BasedOnStyle: Microsoft
+AccessModifierOffset: -4
+AlignAfterOpenBracket: DontAlign
+AlignArrayOfStructures: None
+AlignConsecutiveAssignments: None
+AlignConsecutiveBitFields: None
+AlignConsecutiveDeclarations: None
+AlignConsecutiveMacros: None
+AlignEscapedNewlines: Left
+AlignOperands: DontAlign
+AlignTrailingComments: true
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: true
+AlwaysBreakTemplateDeclarations: MultiLine
+#AttributeMacros
+BinPackArguments: false
+BinPackParameters: false
+BitFieldColonSpacing: After
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: true
+  AfterExternBlock: false
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: true
+  BeforeElse: true
+  # BeforeLambdaBody: false
+  # BeforeWhile: false
+BreakBeforeConceptDeclarations: Allowed
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+BreakStringLiterals: true
+ColumnLimit: 100
+#CommentPragmas
+CompactNamespaces: true
+#ConstructorInitializerIndentWidth
+ContinuationIndentWidth: 4
+Cpp11BracedListStyle: true
+DerivePointerAlignment: false
+DisableFormat: false
+EmptyLineAfterAccessModifier: Never
+EmptyLineBeforeAccessModifier: LogicalBlock
+#ExperimentalAutoDetectBinPacking
+FixNamespaceComments: true
+#ForEachMacros
+#IfMacros
+IncludeBlocks: Preserve
+#IncludeCategories
+#IncludeIsMainRegex
+#IncludeIsMainSourceRegex
+IndentAccessModifiers: false
+IndentCaseBlocks: false
+IndentCaseLabels: false
+IndentExternBlock: NoIndent
+IndentGotoLabels: false
+IndentPPDirectives: AfterHash
+IndentRequiresClause: true
+IndentWidth: 4
+IndentWrappedFunctionNames: false
+IntegerLiteralSeparator:
+  Binary: 8
+  Decimal: 3
+  DecimalMinDigits: 7
+  Hex: 2
+  HexMinDigits: 5
+#InsertBraces
+KeepEmptyLinesAtTheStartOfBlocks: true
+LambdaBodyIndentation: Signature
+#MacroBlockBegin
+#MacroBlockEnd
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: Inner
+PPIndentWidth: -1
+PackConstructorInitializers: NextLine
+#PenaltyBreakAssignment
+#PenaltyBreakBeforeFirstCallParameter
+#PenaltyBreakComment
+#PenaltyBreakFirstLessLess
+#PenaltyBreakOpenParenthesis
+#PenaltyBreakString
+#PenaltyBreakTemplateDeclaration
+#PenaltyExcessCharacter
+#PenaltyIndentedWhitespace
+#PenaltyReturnTypeOnItsOwnLine
+PointerAlignment: Left
+QualifierAlignment: Leave
+#QualifierOrder
+#RawStringFormats
+ReferenceAlignment: Pointer
+ReflowComments: true
+RemoveBracesLLVM: true
+RequiresClausePosition: OwnLine
+RequiresExpressionIndentation: OuterScope
+SeparateDefinitionBlocks: Leave
+ShortNamespaceLines: 1
+SortIncludes: CaseSensitive
+SortUsingDeclarations: true
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: false
+SpaceAroundPointerQualifiers: Default
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+  AfterControlStatements: true
+#   AfterRequiresInClause: true
+#   AfterRequiresInExpression: true
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpaceInEmptyParentheses: false
+# SpacesBeforeTrailingComments: 1
+SpacesInAngles: Never
+SpacesInCStyleCastParentheses: false
+SpacesInConditionalStatement: false
+SpacesInContainerLiterals: false
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: 1
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+Standard: Latest
+#StatementAttributeLikeMacros
+#StatementMacros
+TabWidth: 4
+#TypenameMacros
+LineEnding: DeriveLF
+UseTab: AlignWithSpaces
+#WhitespaceSensitiveMacros
