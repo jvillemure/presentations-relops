@@ -3,7 +3,8 @@ project(relational-op)
 
 set(CMAKE_CXX_STANDARD 20)
 
+add_executable(canonical-definition-c++20 canonical-definition-c++20.cpp)
+add_executable(canonical-definition canonical-definition.cpp)
 add_executable(cquantity-bad cquantity-bad.cpp)
 add_executable(cquantity-good cquantity-good.cpp)
 add_executable(cquantity-c++20 cquantity-c++20.cpp)
-add_executable(canonical-definition canonical-definition.cpp)

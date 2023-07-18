@@ -8,6 +8,12 @@
 #include <cstddef>
 #include <string>
 
+// Examples of non semantically conformant implementations of Equality and the implications.
+
+// I often came across non conforming implementations of Equality.
+// This leads to problems and erratic behavior of data structures and algorithms
+// that expect to be given and equality operation.
+
 struct My_type1
 {
 	std::string m1;

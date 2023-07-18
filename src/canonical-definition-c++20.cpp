@@ -10,15 +10,25 @@
 #include <string>
 #include <compare>
 
+// Implementing equality and ordering in C++20
+
 // In c++20, we only need to define the 3way comparison operator<=> to define all ordering relationships,
 // and possibly the equality also.
 // All uses of the operators (<, >, <=, >=, ==, !=) for the argument types will be automatically be rewritten as
 // a comparison with the result of the 3 way comparison.
 
+// Heterogenous arguments are also possible, and are 'automatically' generated
+// in a sensible way.
+
+// The 3 way comparison yields one of 4 possible values, which can be compared against
+// a literal '0' using any one of (<, >, <=, >=, ==)
 
 // (a <=> b) < 0 if a < b,
 // (a <=> b) > 0 if a > b,
 // (a <=> b) == 0 if a and b are equal/equivalent.
+
+// The result type of the 3 way comparison depends on the 'semantic level' of the composite
+// operations induced by the classe's members. There are
 
 // Like copy/move assign/ctor and dtor, in c++20 any comparison operators can be defaulted.
 
