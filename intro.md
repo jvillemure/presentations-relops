@@ -138,6 +138,51 @@ when we define Equality or Ordering.
 
 9) The hash value of two equal objects must be equal.
 
+## Properties of relationships
+
+In mathematical terminology we say that a relationship 'R' is finer than relationship 'S'
+iff for any objects 'x' and 'y'
+
+- if 'x R y' then 'x S y'
+
+We also say that a relationship 'S' is coarser than 'R'.
+
+In the context of an Equivalence, a relationship 'R' is finer than 'S' if 'S'
+can differentiate two objects that 'R' would consider equivalent.
+
+Example: lexicographic comparison of strings of chars is finer than case insensitive
+lexicographic comparison of strings of chars.
+
+## Classification of Equivalences
+
+### Identity
+
+This is the finest equivalence relationship: two objects are identical if they are the same objects.
+In the programming world, we identity is defined as (in C++):
+
+```cpp
+bool ident(T const& lhs, T const& rhs )
+{
+   return &lhs == &rhs;
+}
+```
+
+This relationship is not as useful as one might think, and is certainly not a good candidate
+for implementing "operator==": two different objects with the same value must compare equal.
+This is necessary for implementing the notion of Value Semantics.
+
+### Value Equivalence
+
+Two objects 'x' and 'y' are value equivalent any operation 'f' that uses 'x'
+could be rewritten using the object 'y' and:
+
+- 'f(x)' == 'f(y)'
+- both 'f(x)' and 'f(y)' would produce the same observable side effects
+
+Unless 'f' 's behavior would depend on the object's identity.
+
+Value equivalence is exactly what the `operator==` should implement.
+
 
 ## Classification of Orderings
 
@@ -150,6 +195,8 @@ Ordering and equality to be of this kind
 
 - For any object 'x', 'y' either 'x < y', 'y < x', or 'x == y'
 
+In other words, all objects are comparable.
+
 ### Strict Weak Ordering
 
 This is normally a strict requirement for working with data structures and algorithms,
@@ -160,8 +207,17 @@ the full value before using the usual <. (A strong ordering is a strict weak ord
 - Incomparability of objects is an equivalence relationship:
   that is: !(x < y) && !(y < x) is an Equivalence.
 
+In other words, a Strict weak ordering may admit incomparable distinct objects;
+but 
+but any two incomparable objects are
+
+Example1: lexicographic ordering of strings of chars is finer than case insensitive
+lexicographic ordering of strings of chars.
+
+Example2:
+
 
 ### Partial Ordering
 
 For the purpose of programming, any Ordering which is not a Strict Weak Ordering is considered a
-partial ordering. This is not good enough for algos and data structures; they...
+partial ordering. This is not good enough for algos and data structures. 

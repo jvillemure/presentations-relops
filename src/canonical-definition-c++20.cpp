@@ -1,14 +1,10 @@
-#include <cmath>
-#include <cstddef>
+#include <cassert>
+#include <compare>
 #include <functional>
 #include <iostream>
 #include <map>
-#include <set>
 #include <string>
 #include <unordered_map>
-#include <unordered_set>
-#include <string>
-#include <compare>
 
 // Implementing equality and ordering in C++20
 
@@ -27,8 +23,14 @@
 // (a <=> b) > 0 if a > b,
 // (a <=> b) == 0 if a and b are equal/equivalent.
 
-// The result type of the 3 way comparison depends on the 'semantic level' of the composite
-// operations induced by the classe's members. There are
+// The result type of the 3 way comparison depends on the classification of the composite
+// operations induced by the classe's members:
+// - std::strong_ordering if all data members' operator<=> yields std::strong_ordering
+// - std::weak_ordering if some data member's operator<=> yields std::weak_ordering
+//   and all others yields std::strong_ordering
+// - std::partial_ordering otherwise
+
+// Non floating point built-in types' ordering categories are std::strong_ordering
 
 // Like copy/move assign/ctor and dtor, in c++20 any comparison operators can be defaulted.
 
@@ -55,14 +57,97 @@ struct std::hash<ns1::My_type1>
 
 };
 
-
 using namespace std;
 using namespace ns1;
-int main() {
+int main()
+{
 
-	My_type1 v3 = {"abc", 4};
-	map<My_type1, int> v4;
-	unordered_map<My_type1, int> v5 ;
+	My_type1 v1 = {"abc"s, 4};
+	My_type1 v2 = {"abc"s, 0};
+	My_type1 v3 = {"def"s, 0};
+	My_type1 v4 = {"hiijkl"s, -10};
+	auto v11 = v1;
+	My_type1 v12;
+	v12 = v1;
+	My_type1 v13 = {"abc"s, 4};
 
-	cout << "canonical definitions\n";
+	// Verify the fundamental properties of the ordering
+
+	// Antireflexive
+	assert(!(v1 < v1));
+	assert(!(v2 < v2));
+	assert(!(v3 < v3));
+	assert(!(v4 < v4));
+
+	// Asymmetry
+	assert(v1 < v3);
+	assert(!(v3 < v1));
+
+	assert(v2 < v1);
+	assert(!(v1 < v2));
+
+	assert(v2 < v1);
+	assert(!(v1 < v2));
+
+	assert(v2 < v3);
+	assert(!(v3 < v2));
+
+	assert(v3 < v4);
+	assert(!(v4 < v3));
+
+	// Transitivity
+	assert(v2 < v3 && v3 < v4);
+	assert(v2 < v4);
+
+	assert(v1 < v3 && v3 < v4);
+	assert(v1 < v4);
+
+	assert(v2 < v1 && v1 < v4);
+	assert(v2 < v4);
+
+	// Verify the fundamental properties of the equality
+
+	// Reflexivity
+	assert(v1 == v1);
+	assert(v11 == v11);
+	assert(v12 == v12);
+	assert(v13 == v13);
+
+	// Symmetry
+	assert(v1 == v11);
+	assert(v11 == v1);
+
+	assert(v11 == v12);
+	assert(v12 == v11);
+
+	assert(v11 == v13);
+	assert(v13 == v11);
+
+	// Transitivity
+	assert(v1 == v11 && v11 == v12);
+	assert(v1 == v12);
+
+	assert(v1 == v13 && v13 == v11);
+	assert(v1 == v11);
+
+	// Check that equality distinguishes objects with distinct values
+	assert(!(v1 == v2));
+	assert(!(v2 == v1));
+
+	assert(!(v1 == v3));
+	assert(!(v3 == v1));
+
+	assert(!(v1 == v4));
+	assert(!(v4 == v1));
+
+	// Consistency with hash calculations:
+	hash<My_type1> myhash{};
+	assert(myhash(v1) != myhash(v3));
+	assert(myhash(v2) != myhash(v3));
+	assert(myhash(v1) != myhash(v4));
+
+	assert(myhash(v1) == myhash(v11));
+	assert(myhash(v12) == myhash(v11));
+
+	cout << "All OK! done\n";
 }

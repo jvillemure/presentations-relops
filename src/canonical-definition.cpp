@@ -103,6 +103,7 @@ template<> struct std::hash<ns1::My_type1> {
 };
 
 // An example of a coarser comparison
+// ....
 
 using namespace std;
 using namespace ns1;
