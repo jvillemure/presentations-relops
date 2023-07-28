@@ -8,10 +8,10 @@
 
 // Implementing equality and ordering in C++20
 
-// In c++20, we only need to define the 3way comparison operator<=> to define all ordering relationships,
-// and possibly the equality also.
-// All uses of the operators (<, >, <=, >=, ==, !=) for the argument types will be automatically be rewritten as
-// a comparison with the result of the 3 way comparison.
+// In c++20, we only need to define the 3way comparison operator<=> to define all ordering
+// relationships, and possibly the equality also. All uses of the operators (<, >, <=, >=, ==, !=)
+// for the argument types will be automatically be rewritten as a comparison with the result of the
+// 3 way comparison.
 
 // Heterogenous arguments are also possible, and are 'automatically' generated
 // in a sensible way.
@@ -43,25 +43,22 @@ struct My_type1 {
 
 	friend auto operator<=>(My_type1 const&, My_type1 const&) = default;
 };
-}
+} // namespace ns1
 
-template<>
-struct std::hash<ns1::My_type1>
-{
+template<> struct std::hash<ns1::My_type1> {
 	std::size_t operator()(ns1::My_type1 const& o) const noexcept
 	{
 		std::size_t h1 = std::hash<std::string>{}(o.m1);
 		std::size_t h2 = std::hash<int>{}(o.m2);
 		return h1 ^ (h2 << 1); // or use boost::hash_combine
 	}
-
 };
 
 using namespace std;
 using namespace ns1;
+
 int main()
 {
-
 	My_type1 v1 = {"abc"s, 4};
 	My_type1 v2 = {"abc"s, 0};
 	My_type1 v3 = {"def"s, 0};
