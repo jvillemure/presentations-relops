@@ -195,11 +195,11 @@ Ordering and equality to be of this kind
 
 - For any object 'x', 'y' either 'x < y', 'y < x', or 'x == y'
 
-In other words, all objects are comparable.
+In other words, all objects are comparable; and if not equal then one must be smaller than the other. 
 
 ### Strict Weak Ordering
 
-This is normally a strict requirement for working with data structures and algorithms,
+This is the  requirement for working with data structures and algorithms,
 it is similar to strong ordering, in that incomparable object are equivalent. This
 is the kind of ordering that results from comparing only part of a classe's members, or by truncating
 the full value before using the usual <. (A strong ordering is a strict weak ordering).
@@ -208,13 +208,17 @@ the full value before using the usual <. (A strong ordering is a strict weak ord
   that is: !(x < y) && !(y < x) is an Equivalence.
 
 In other words, a Strict weak ordering may admit incomparable distinct objects;
-but 
-but any two incomparable objects are
+but any two incomparable objects are to be considered as equivalent with respect to this ordering.
+
+A good mental model for strict weak ordering is the following:
+A strict weak ordering is a strong ordering of the equivalent object.
 
 Example1: lexicographic ordering of strings of chars is finer than case insensitive
-lexicographic ordering of strings of chars.
+lexicographic ordering of strings of chars. The equivalence classes are the sets
+of case independent strings.
 
-Example2:
+Example2: comparing the truncated values of two floating points.
+The equivalence classes are the sets of truncated floating point values.
 
 
 ### Partial Ordering
